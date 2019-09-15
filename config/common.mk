@@ -62,6 +62,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
 
+# Include font files
+include vendor/minus/config/fonts.mk
+
 # Lineage-specific file
 PRODUCT_COPY_FILES += \
     vendor/aosp/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
