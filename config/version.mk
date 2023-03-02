@@ -8,3 +8,17 @@ MINUS_BUILD_DATE := $(MINUS_DATE_YEAR)$(MINUS_DATE_MONTH)$(MINUS_DATE_DAY)-$(MIN
 MINUS_PLATFORM_VERSION := 15.0
 MINUS_VERSION := MinusOS_$(MINUS_BUILD)-$(MINUS_PLATFORM_VERSION)-$(MINUS_VERSION_PROP)-$(MINUS_BUILD_DATE)
 MINUS_VERSION_PROP := Kabini
+
+# Signing
+ifeq (user,$(TARGET_BUILD_VARIANT))
+ifneq (,$(wildcard .android-certs/releasekey.pk8))
+PRODUCT_DEFAULT_DEV_CERTIFICATE := .android-certs/releasekey
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.oem_unlock_supported=1
+endif
+ifneq (,$(wildcard .android-certs/verity.pk8))
+PRODUCT_VERITY_SIGNING_KEY := .android-certs/verity
+endif
+ifneq (,$(wildcard .android-certs/otakey.x509.pem))
+PRODUCT_OTA_PUBLIC_KEYS := .android-certs/otakey.x509.pem
+endif
+endif
