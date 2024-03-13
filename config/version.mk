@@ -10,7 +10,7 @@ MINUS_VERSION := MinusOS_$(MINUS_BUILD)-$(MINUS_PLATFORM_VERSION)-$(MINUS_VERSIO
 MINUS_VERSION_PROP := Kabini
 
 # Signing
-ifeq (user,$(TARGET_BUILD_VARIANT))
+ifneq (eng,$(TARGET_BUILD_VARIANT))
 ifneq (,$(wildcard vendor/aosp/signing/keys/releasekey.pk8))
 PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/aosp/signing/keys/releasekey
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.oem_unlock_supported=1
