@@ -215,3 +215,6 @@ CUSTOM_LOCALES += \
     
 include vendor/minus/config/version.mk
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
+
+# Default AOSP sounds
+$(call inherit-product, frameworks/base/data/sounds/AllAudio.mk)
